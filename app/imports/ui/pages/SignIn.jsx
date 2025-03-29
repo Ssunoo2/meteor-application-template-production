@@ -7,6 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import OAuthButtonGroup from '../components/OAuthButtonGroup';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -41,6 +42,7 @@ const SignIn = () => {
   if (redirect) {
     return (<Navigate to="/" />);
   }
+
   // Otherwise return the Login form.
   return (
     <Container id={PAGE_IDS.SIGN_IN} className="py-3">
@@ -49,6 +51,7 @@ const SignIn = () => {
           <Col className="text-center">
             <h2>Login to your account</h2>
           </Col>
+
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
@@ -59,6 +62,11 @@ const SignIn = () => {
               </Card.Body>
             </Card>
           </AutoForm>
+          {/* // open auth */}
+          <OAuthButtonGroup
+            onSuccess={() => setRedirect(true)}
+            onError={(msg) => setError(msg)}
+          />
           <Alert variant="secondary">
             <Link to="/signup">Click here to Register</Link>
           </Alert>

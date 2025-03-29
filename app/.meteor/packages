@@ -44,3 +44,7 @@ mdg:validated-method
 didericis:callpromise-mixin
 meteortesting:mocha
 udondan:zipzap
+accounts-ui
+accounts-base
+accounts-google
+accounts-github

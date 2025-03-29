@@ -10,6 +10,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { UserProfiles } from '../../api/user/UserProfileCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import OAuthButtonGroup from '../components/OAuthButtonGroup';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -71,6 +72,10 @@ const SignUp = () => {
               </Card.Body>
             </Card>
           </AutoForm>
+          <OAuthButtonGroup
+            onSuccess={() => setRedirectToRef(true)}
+            onError={(msg) => setError(msg)}
+          />
           <Alert variant="secondary">
             Already have an account? Login <Link to="/signin">here</Link>
           </Alert>
